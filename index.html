@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html class="ui-mobile">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=4">
+   <title>Slam Live Stream</title>
+  
+   <script src="build/jquery.js"></script>	
+   <script src="js/jquery.mobile-1.3.2.min.js"></script>
+   <script type="text/javascript" src="phonegap.js"></script>
+   <script src="js/slam.js"></script>
+	<script src="build/mediaelement.js"></script>
+	<link rel="stylesheet" href="build/mediaelementplayer.min.css" />
+   <!-- <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" /> -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+    <body id="ui-page-top" class="ui-mobile-viewport ui-overlay-a">
+    
+    <header data-role="header" class="ui-header ui-bar-c header">
+    </header>
+    
+    <article id="index" class="nodes" data-role="page">
+    <audio id="player2" src="http://media.guardian.co.tt:8000/slam100.5" type="audio/mp3" controls="controls" >		
+</audio>	
+
+<script>
+$('audio').mediaelementplayer({
+features:['playpause','current','volume'],
+});
+</script>
+
+<video width="360" height="203" id="player1" src="http://live.slam1005.com/hls-live/livepkgr/_definst_/liveevent/slam.m3u8" type="video/mp4" poster="http://www.slam1005.com/bg.png" controls="controls"></video>
+	
+<script>
+MediaElement('player1', {success: function(me) {
+
+	me.play();
+	document.getElementById('pp')['onclick'] = function() {
+		if (me.paused)
+			me.play();
+		else
+			me.pause();
+	};
+
+}});
+</script>
+    </article>
+</body>
+</html>
